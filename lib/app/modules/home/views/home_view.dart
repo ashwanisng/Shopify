@@ -20,10 +20,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('HomeView'),
-        centerTitle: true,
-      ),
       body: Obx(() => IndexedStack(
             index: landingPageController.slectedIndex.value,
             children: [
