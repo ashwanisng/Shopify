@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,21 +26,23 @@ class CartView extends GetView<CartController> {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Container(
+      body: ListView.builder(
+        itemCount: controller.productController.addToCart.length,
+        itemBuilder: (context, index) {
+          var data = controller.productController.addToCart[index];
+          print(data.name);
+          return Container(
             height: 104,
             child: Card(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.network(
-                      "https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg"),
+                  Image.network(data.imageUrl),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Product Name',
+                        data.name,
                         style: TextStyle(
                           color: Env.colors.primaryBlack,
                           fontSize: 18,
@@ -48,7 +50,7 @@ class CartView extends GetView<CartController> {
                         ),
                       ),
                       Text(
-                        'Product Size',
+                        controller.productController.choosenSize.value,
                         style: TextStyle(
                           color: Env.colors.primaryBlack,
                         ),
@@ -93,7 +95,7 @@ class CartView extends GetView<CartController> {
                         icon: Icon(Icons.more_vert),
                       ),
                       Text(
-                        "Rs.54",
+                        "Rs.${data.price}",
                         style: TextStyle(
                           color: Env.colors.primaryBlack,
                           fontSize: 16,
@@ -105,8 +107,8 @@ class CartView extends GetView<CartController> {
                 ],
               ),
             ),
-          )
-        ],
+          );
+        },
       ),
     );
   }

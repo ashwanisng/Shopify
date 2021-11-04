@@ -5,6 +5,7 @@ class Products {
   double price;
   String imageUrl;
   bool? isFavorite;
+  String? size;
 
   Products({
     required this.id,
@@ -13,5 +14,6 @@ class Products {
     required this.price,
     required this.imageUrl,
     this.isFavorite,
+    this.size,
   });
 }

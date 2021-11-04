@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:shopify/app/data/models/products.dart';
 import 'package:shopify/app/enviroment/env.dart';
 
 import 'package:shopify/app/modules/product/controllers/product_controller.dart';
@@ -152,7 +153,19 @@ class ProductView extends GetView<ProductController> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: CustomButton(
               buttonText: "ADD TO CART",
-              onPressed: () {},
+              onPressed: () {
+                controller.addToCart.add(
+                  Products(
+                    id: controller.productId!,
+                    name: controller.productName!,
+                    description: controller.productDescription!,
+                    price: controller.productPrice!,
+                    imageUrl: controller.productImage!,
+                    size: controller.choosenSize.value,
+                  ),
+                );
+                print("working");
+              },
             ),
           ),
         ],

@@ -7,6 +7,7 @@ class ProductBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<ProductController>(
       () => ProductController(),
+      fenix: true,
     );
   }
 }
