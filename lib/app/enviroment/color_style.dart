@@ -9,4 +9,5 @@ class ColorsStyle {
   final Color primaryGreen = Color(0xff2AA952);
   final Color error = Color(0xffF01F0E);
   final Color background = Color(0xffF9F9F9);
+  final Color primaryBlack = Color(0xff000000);
 }

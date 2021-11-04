@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 class CartController extends GetxController {
   //TODO: Implement CartController
 
+  var totalCollection = 0.obs;
+
   @override
   void onInit() {
     super.onInit();

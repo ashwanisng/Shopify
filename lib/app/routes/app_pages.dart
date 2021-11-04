@@ -1,5 +1,3 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:get/get.dart';
 
 import 'package:shopify/app/modules/cart/bindings/cart_binding.dart';
@@ -8,10 +6,14 @@ import 'package:shopify/app/modules/category/bindings/category_binding.dart';
 import 'package:shopify/app/modules/category/views/category_view.dart';
 import 'package:shopify/app/modules/home/bindings/home_binding.dart';
 import 'package:shopify/app/modules/home/views/home_view.dart';
+import 'package:shopify/app/modules/product/bindings/product_binding.dart';
+import 'package:shopify/app/modules/product/views/product_view.dart';
 import 'package:shopify/app/modules/profile/bindings/profile_binding.dart';
 import 'package:shopify/app/modules/profile/views/profile_view.dart';
 import 'package:shopify/app/modules/wishlist/bindings/wishlist_binding.dart';
 import 'package:shopify/app/modules/wishlist/views/wishlist_view.dart';
+
+// ignore_for_file: constant_identifier_names
 
 part 'app_routes.dart';
 
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT,
+      page: () => ProductView(),
+      binding: ProductBinding(),
     ),
   ];
 }

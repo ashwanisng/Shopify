@@ -28,7 +28,7 @@ class TextStyles {
   );
 
   final TextStyle text = TextStyle(
-    fontSize: 16,
+    fontSize: 18,
     fontFamily: "Roboto",
   );
 

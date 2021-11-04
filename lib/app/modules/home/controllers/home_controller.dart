@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_overrides
+// ignore_for_file: unnecessary_overrides, avoid_print
 
 import 'package:get/get.dart';
 import 'package:shopify/app/data/models/products.dart';
@@ -56,6 +56,9 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
+    // dynamic data = Get.arguments;
+
+    // print(data);
     super.onInit();
   }
 

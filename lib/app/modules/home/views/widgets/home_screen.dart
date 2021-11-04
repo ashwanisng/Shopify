@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/enviroment/env.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
+import 'package:shopify/app/modules/home/views/view_product/view_product.dart';
 
 class HomeScreenView extends GetView<HomeController> {
   @override
@@ -89,12 +90,26 @@ class HomeScreenView extends GetView<HomeController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: Container(
-                          child: Image.network(
-                            e.imageUrl,
-                            fit: BoxFit.cover,
-                            width: 200,
-                            height: 110,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed(
+                              '/product',
+                              arguments: [
+                                e.id,
+                                e.name,
+                                e.price,
+                                e.imageUrl,
+                                e.description,
+                              ],
+                            );
+                          },
+                          child: Container(
+                            child: Image.network(
+                              e.imageUrl,
+                              fit: BoxFit.cover,
+                              width: 200,
+                              height: 110,
+                            ),
                           ),
                         ),
                       ),
