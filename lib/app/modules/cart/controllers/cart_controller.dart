@@ -12,9 +12,6 @@ class CartController extends GetxController {
 
   @override
   void onInit() {
-    var len = productController.addToCart.map((e) => e.imageUrl);
-
-    print(len);
     super.onInit();
   }
 

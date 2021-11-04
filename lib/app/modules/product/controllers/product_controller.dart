@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_overrides, prefer_typing_uninitialized_variables
 
 import 'package:get/get.dart';
+import 'package:shopify/app/data/models/cart.dart';
 import 'package:shopify/app/data/models/products.dart';
 
 class ProductController extends GetxController {
@@ -28,14 +29,28 @@ class ProductController extends GetxController {
     productDescription = data[4];
 
     for (var i = 0; i < addToCart.length; i++) {
-      print(addToCart[i].name);
+      print(addToCart[i].productName);
     }
     print(addToCart.length);
 
     super.onInit();
   }
 
-  var addToCart = <Products>[];
+  void addItemToCart(
+    String imageUrl,
+    double price,
+    String productName,
+    String id,
+  ) {
+    addToCart.add(CartItem(
+      productId: id,
+      productImageUrl: imageUrl,
+      productName: productName,
+      productPrice: price,
+    ));
+  }
+
+  var addToCart = <CartItem>[];
 
   @override
   void onReady() {

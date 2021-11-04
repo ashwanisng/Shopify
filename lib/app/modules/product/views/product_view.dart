@@ -154,17 +154,12 @@ class ProductView extends GetView<ProductController> {
             child: CustomButton(
               buttonText: "ADD TO CART",
               onPressed: () {
-                controller.addToCart.add(
-                  Products(
-                    id: controller.productId!,
-                    name: controller.productName!,
-                    description: controller.productDescription!,
-                    price: controller.productPrice!,
-                    imageUrl: controller.productImage!,
-                    size: controller.choosenSize.value,
-                  ),
+                controller.addItemToCart(
+                  controller.productImage!,
+                  controller.productPrice!,
+                  controller.productName!,
+                  controller.productId!,
                 );
-                print("working");
               },
             ),
           ),
