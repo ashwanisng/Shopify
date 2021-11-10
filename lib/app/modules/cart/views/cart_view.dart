@@ -15,7 +15,7 @@ class CartView extends GetView<CartController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
             'My Bag',
@@ -27,87 +27,20 @@ class CartView extends GetView<CartController> {
           ),
           centerTitle: true,
         ),
-        body: GetBuilder<ProductController>(
-          init: ProductController(),
-          builder: (value) => ListView.builder(
-            itemCount: value.addToCart.length,
+        body: Obx(
+          () => ListView.builder(
+            itemCount: controller.itemService.items.length,
             itemBuilder: (context, index) {
-              var data = value.addToCart[index];
-              print(data.productName);
-              return Container(
-                height: 104,
-                child: Card(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.network(data.productImageUrl),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            data.productName,
-                            style: TextStyle(
-                              color: Env.colors.primaryBlack,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            controller.productController.choosenSize.value,
-                            style: TextStyle(
-                              color: Env.colors.primaryBlack,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  if (controller.totalCollection.value <= 0) {
-                                    controller.totalCollection.value = 0;
-                                  } else {
-                                    controller.totalCollection.value--;
-                                  }
-                                },
-                                icon: Icon(
-                                  CupertinoIcons.minus_circle_fill,
-                                ),
-                              ),
-                              Obx(
-                                () => Text(
-                                  "${controller.totalCollection.value}",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  controller.totalCollection.value++;
-                                },
-                                icon: Icon(
-                                  CupertinoIcons.add_circled_solid,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.more_vert),
-                          ),
-                          Text(
-                            "Rs.${data.productPrice}",
-                            style: TextStyle(
-                              color: Env.colors.primaryBlack,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  leading: Text(
+                    controller.itemService.items[index].productName.isEmpty
+                        ? 'Product'
+                        : controller.itemService.items[index].productName,
+                  ),
+                  title: Text(
+                    '\$${controller.itemService.items[index].productPrice}',
                   ),
                 ),
               );
@@ -116,3 +49,90 @@ class CartView extends GetView<CartController> {
         ));
   }
 }
+
+/**
+ *  ListView.builder(
+        itemCount: controller.productController.addToCart.length,
+        itemBuilder: (context, index) {
+          var data = controller.productController.addToCart[index];
+          print(data!.productName);
+          return Container(
+            height: 104,
+            child: Card(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.network(data.productImageUrl),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        data.productName,
+                        style: TextStyle(
+                          color: Env.colors.primaryBlack,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        controller.productController.choosenSize.value,
+                        style: TextStyle(
+                          color: Env.colors.primaryBlack,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              if (controller.totalCollection.value <= 0) {
+                                controller.totalCollection.value = 0;
+                              } else {
+                                controller.totalCollection.value--;
+                              }
+                            },
+                            icon: Icon(
+                              CupertinoIcons.minus_circle_fill,
+                            ),
+                          ),
+                          Obx(
+                            () => Text(
+                              "${controller.totalCollection.value}",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              controller.totalCollection.value++;
+                            },
+                            icon: Icon(
+                              CupertinoIcons.add_circled_solid,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.more_vert),
+                      ),
+                      Text(
+                        "Rs.${data.productPrice}",
+                        style: TextStyle(
+                          color: Env.colors.primaryBlack,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+ */

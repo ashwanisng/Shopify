@@ -160,9 +160,9 @@ class MyImageView extends StatelessWidget {
     return Container(
       height: 250,
       margin: EdgeInsets.symmetric(horizontal: 5.0),
-      child: FittedBox(
-        fit: BoxFit.fill,
-        child: Image.asset(path),
+      child: Image.asset(
+        path,
+        fit: BoxFit.cover,
       ),
     );
   }
