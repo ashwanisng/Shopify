@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/enviroment/env.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
-import 'package:shopify/app/modules/home/views/view_product/view_product.dart';
 
 class HomeScreenView extends GetView<HomeController> {
   @override

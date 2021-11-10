@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_overrides
 
 import 'package:get/get.dart';
-import 'package:shopify/app/modules/product/controllers/product_controller.dart';
 import 'package:shopify/app/services/cart/item_service.dart';
 
 class CartController extends GetxController {

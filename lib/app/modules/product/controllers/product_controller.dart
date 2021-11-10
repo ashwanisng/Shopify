@@ -1,8 +1,7 @@
 // ignore_for_file: unnecessary_overrides, prefer_typing_uninitialized_variables, iterable_contains_unrelated_type
 
 import 'package:get/get.dart';
-import 'package:shopify/app/data/models/cart.dart';
-import 'package:shopify/app/data/models/products.dart';
+
 import 'package:shopify/app/services/cart/item_service.dart';
 
 class ProductController extends GetxController {

@@ -5,14 +5,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:shopify/app/data/models/cart.dart';
-import 'package:shopify/app/data/models/products.dart';
 import 'package:shopify/app/enviroment/env.dart';
 
 import 'package:shopify/app/modules/product/controllers/product_controller.dart';
-import 'package:shopify/app/services/cart/item_service.dart';
 import 'package:shopify/app/utils/custom_button.dart';
 
-// ignore: use_key_in_widget_constructors
 class ProductView extends GetView<ProductController> {
   @override
   Widget build(BuildContext context) {
@@ -163,6 +160,7 @@ class ProductView extends GetView<ProductController> {
                     productImageUrl: controller.productImage!,
                     productName: controller.productName!,
                     productPrice: controller.productPrice!,
+                    productSize: controller.choosenSize.value,
                   ),
                 );
 
