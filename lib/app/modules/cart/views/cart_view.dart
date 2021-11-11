@@ -14,7 +14,6 @@ class CartView extends GetView<CartController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
           'My Bag',
@@ -24,7 +23,8 @@ class CartView extends GetView<CartController> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        centerTitle: true,
+        // centerTitle: true,
+        backgroundColor: Env.colors.primaryCartScreenBackgroundColor,
       ),
       body: Obx(
         () => ListView.builder(
@@ -32,79 +32,102 @@ class CartView extends GetView<CartController> {
           itemBuilder: (context, index) {
             var data = controller.itemService.items[index];
             return Container(
-              height: 104,
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              height: 140,
               child: Card(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.network(data.productImageUrl),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          data.productName,
-                          style: TextStyle(
-                            color: Env.colors.primaryBlack,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                elevation: 10,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Env.colors.primaryWhite,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        // height: 100,
+                        width: 120,
+                        child: Image.network(
+                          data.productImageUrl,
+                          fit: BoxFit.cover,
                         ),
-                        Text(
-                          data.productSize,
-                          style: TextStyle(
-                            color: Env.colors.primaryBlack,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            data.productName,
+                            style: TextStyle(
+                              color: Env.colors.primaryBlack,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                if (controller.totalCollection.value <= 0) {
-                                  controller.totalCollection.value = 0;
-                                } else {
-                                  controller.totalCollection.value--;
-                                }
-                              },
-                              icon: Icon(
-                                CupertinoIcons.minus_circle_fill,
+                          Text(
+                            data.productSize,
+                            style: TextStyle(
+                              color: Env.colors.primaryBlack,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  if (controller.totalCollection.value <= 0) {
+                                    controller.totalCollection.value = 0;
+                                  } else {
+                                    controller.totalCollection.value--;
+                                  }
+                                },
+                                icon: Icon(
+                                  CupertinoIcons.minus_circle_fill,
+                                  color: Env.colors.primaryGray,
+                                ),
+                              ),
+                              Obx(
+                                () => Text(
+                                  "${controller.totalCollection.value}",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  controller.totalCollection.value++;
+                                },
+                                icon: Icon(
+                                  CupertinoIcons.add_circled_solid,
+                                  color: Env.colors.primaryGray,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.more_vert,
+                              color: Env.colors.primaryGray,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Rs.${data.productPrice}",
+                              style: TextStyle(
+                                color: Env.colors.primaryBlack,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Obx(
-                              () => Text(
-                                "${controller.totalCollection.value}",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                controller.totalCollection.value++;
-                              },
-                              icon: Icon(
-                                CupertinoIcons.add_circled_solid,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.more_vert),
-                        ),
-                        Text(
-                          "Rs.${data.productPrice}",
-                          style: TextStyle(
-                            color: Env.colors.primaryBlack,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
