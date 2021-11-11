@@ -1,5 +1,5 @@
-import 'package:shopify/app/enviroment/color_style.dart';
-import 'package:shopify/app/enviroment/text_style.dart';
+import 'package:shopify/app/core/enviroment/color_style.dart';
+import 'package:shopify/app/core/enviroment/text_style.dart';
 
 class Env {
   final ColorsStyle colorsStyle = ColorsStyle();

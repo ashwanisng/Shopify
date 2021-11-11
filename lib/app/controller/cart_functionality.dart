@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:shopify/app/data/models/cart.dart';
 
-class ItemService extends GetxController {
+class CartFunctionalityController extends GetxController {
   var items = <CartItem>[].obs;
 
   addToCart(BuildContext context, CartItem addProduct) {

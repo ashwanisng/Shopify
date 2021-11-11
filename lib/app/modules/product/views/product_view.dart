@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:shopify/app/core/enviroment/env.dart';
 import 'package:shopify/app/data/models/cart.dart';
-import 'package:shopify/app/enviroment/env.dart';
 
 import 'package:shopify/app/modules/product/controllers/product_controller.dart';
 import 'package:shopify/app/utils/custom_button.dart';

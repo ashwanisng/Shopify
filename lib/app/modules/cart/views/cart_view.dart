@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:shopify/app/enviroment/env.dart';
+import 'package:shopify/app/core/enviroment/env.dart';
 
 import 'package:shopify/app/modules/cart/controllers/cart_controller.dart';
 import 'package:shopify/app/utils/custom_button.dart';
@@ -179,7 +179,7 @@ class CartView extends GetView<CartController> {
               ],
             ),
           ),
-          CustomButton(buttonText: "buttonText", onPressed: () {}),
+          CustomButton(buttonText: "CHECK OUT", onPressed: () {}),
         ],
       ),
     );

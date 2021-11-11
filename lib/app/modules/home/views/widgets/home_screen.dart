@@ -4,7 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shopify/app/enviroment/env.dart';
+import 'package:shopify/app/core/enviroment/env.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 
 class HomeScreenView extends GetView<HomeController> {
@@ -126,8 +126,22 @@ class HomeScreenView extends GetView<HomeController> {
                               ),
                             ),
                             IconButton(
-                                onPressed: () {},
-                                icon: Icon(CupertinoIcons.heart))
+                              onPressed: () {
+                                e.isFavorite.value == true
+                                    ? e.isFavorite.value = false
+                                    : e.isFavorite.value = true;
+                                print("pressed : ${e.isFavorite}");
+                              },
+                              icon: Obx(
+                                () => e.isFavorite.value == true
+                                    ? Icon(
+                                        CupertinoIcons.heart_fill,
+                                        color: Colors.red,
+                                        size: 32,
+                                      )
+                                    : Icon(CupertinoIcons.heart),
+                              ),
+                            ),
                           ],
                         ),
                       ),

@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 
-import 'package:shopify/app/services/cart/item_service.dart';
+import 'package:shopify/app/controller/cart_functionality.dart';
 
 class ProductController extends GetxController {
   //TODO: Implement ProductController
@@ -14,7 +14,8 @@ class ProductController extends GetxController {
   String? productImage;
   RxString choosenSize = "".obs;
 
-  ItemService itemService = Get.find<ItemService>();
+  CartFunctionalityController itemService =
+      Get.find<CartFunctionalityController>();
 
   void setSelected(String value) {
     choosenSize.value = value;

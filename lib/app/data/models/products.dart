@@ -1,10 +1,12 @@
+import 'package:get/get.dart';
+
 class Products {
   String id;
   String name;
   String description;
   double price;
   String imageUrl;
-  bool? isFavorite;
+  RxBool isFavorite;
   String? size;
 
   Products({
@@ -13,7 +15,7 @@ class Products {
     required this.description,
     required this.price,
     required this.imageUrl,
-    this.isFavorite,
+    required this.isFavorite,
     this.size,
   });
 }

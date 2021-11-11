@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_overrides
 
 import 'package:get/get.dart';
-import 'package:shopify/app/services/cart/item_service.dart';
+import 'package:shopify/app/controller/cart_functionality.dart';
 
 class CartController extends GetxController {
   //TODO: Implement CartController
@@ -10,7 +10,8 @@ class CartController extends GetxController {
 
   // ProductController productController = Get.find<ProductController>();
 
-  ItemService itemService = Get.find<ItemService>();
+  CartFunctionalityController itemService =
+      Get.find<CartFunctionalityController>();
   @override
   void onInit() {
     for (var i = 0; i < itemService.items.length; i++) {
