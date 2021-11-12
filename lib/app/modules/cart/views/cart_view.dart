@@ -14,18 +14,19 @@ class CartView extends GetView<CartController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Env.colors.primaryWhite,
       appBar: AppBar(
-        elevation: 0,
         title: Text(
           'My Bag',
           style: TextStyle(
             color: Env.colors.primaryBlack,
             fontSize: 34,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Roboto',
           ),
         ),
-        // centerTitle: true,
-        backgroundColor: Env.colors.primaryCartScreenBackgroundColor,
+        backgroundColor: Env.colors.primaryWhite,
+        elevation: 0,
       ),
       body: Column(
         children: [
@@ -148,7 +149,7 @@ class CartView extends GetView<CartController> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

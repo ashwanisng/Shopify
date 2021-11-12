@@ -163,8 +163,6 @@ class ProductView extends GetView<ProductController> {
                     productSize: controller.choosenSize.value,
                   ),
                 );
-
-                print("printingggggggggggggg");
               },
             ),
           ),

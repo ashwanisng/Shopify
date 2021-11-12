@@ -37,42 +37,8 @@ class ProductController extends GetxController {
     productImage = data[3];
     productDescription = data[4];
 
-    print(productId);
-
     super.onInit();
   }
-
-  // addItemToCart(
-  //   String imageUrl,
-  //   double price,
-  //   String productName,
-  //   String id,
-  // ) {
-  //   if (addToCart.containsKey(id)) {
-  //     addToCart.update(
-  //       id,
-  //       (existingItem) {
-  //         print(existingItem.productName);
-  //         return CartItem(
-  //           productName: existingItem.productName,
-  //           productImageUrl: existingItem.productImageUrl,
-  //           productPrice: existingItem.productPrice,
-  //           productId: existingItem.productId,
-  //         );
-  //       },
-  //     );
-  //   } else {
-  //     addToCart.putIfAbsent(
-  //       id,
-  //       () => CartItem(
-  //         productId: DateTime.now().toString(),
-  //         productName: productName,
-  //         productPrice: price,
-  //         productImageUrl: imageUrl,
-  //       ),
-  //     );
-  //   }
-  // }
 
   @override
   void onReady() {

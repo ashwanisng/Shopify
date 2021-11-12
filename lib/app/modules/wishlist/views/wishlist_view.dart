@@ -4,9 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:shopify/app/controller/wishlist_functionality.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
-import 'package:shopify/app/data/models/wishlist.dart';
 
 import 'package:shopify/app/modules/wishlist/controllers/wishlist_controller.dart';
 
@@ -20,9 +18,19 @@ class WishlistView extends GetView<WishlistController> {
     final double itemWidth = size.width / 2;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Wishlist View'),
-        centerTitle: true,
+        title: Text(
+          'Favorites',
+          style: TextStyle(
+            color: Env.colors.primaryBlack,
+            fontSize: 34,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Roboto',
+          ),
+        ),
+        backgroundColor: Env.colors.primaryWhite,
+        elevation: 0,
       ),
       body: Obx(
         () => GridView.builder(
@@ -62,7 +70,6 @@ class WishlistView extends GetView<WishlistController> {
                         ),
                         child: IconButton(
                           onPressed: () {
-                            print(index);
                             controller.wishlistFunctionality
                                 .removeProductFromWishlist(
                               context,
@@ -166,57 +173,3 @@ class WishlistView extends GetView<WishlistController> {
     );
   }
 }
-
-/**
- * Column(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.network(
-                        data.productImage!,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        CupertinoIcons.bag,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              data.productName!,
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              '\$${data.productPrice}',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
- */

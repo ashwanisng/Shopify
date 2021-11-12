@@ -12,9 +12,19 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Env.colors.primaryWhite,
       appBar: AppBar(
-        title: Text('My Profile'),
-        centerTitle: true,
+        title: Text(
+          'My Profile',
+          style: TextStyle(
+            color: Env.colors.primaryBlack,
+            fontSize: 34,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Roboto',
+          ),
+        ),
+        backgroundColor: Env.colors.primaryWhite,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
