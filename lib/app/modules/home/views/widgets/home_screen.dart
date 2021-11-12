@@ -132,7 +132,7 @@ class HomeScreenView extends GetView<HomeController> {
                                     ? e.isFavorite.value = false
                                     : e.isFavorite.value = true;
 
-                                if (e.isFavorite.isTrue) {
+                                if (e.isFavorite.value == true) {
                                   controller.wishlistFunctionality
                                       .addProductToWishlist(
                                     context,
@@ -145,20 +145,17 @@ class HomeScreenView extends GetView<HomeController> {
                                     ),
                                   );
                                 } else {
-                                  if (controller.wishlistFunctionality.products
-                                      .isNotEmpty) {
-                                    controller.wishlistFunctionality
-                                        .removeProductFromWishlist(
-                                      context,
-                                      WishList(
-                                        productName: e.name,
-                                        productId: e.id,
-                                        productPrice: e.price,
-                                        productImage: e.imageUrl,
-                                        isFavourite: e.isFavorite.value,
-                                      ),
-                                    );
-                                  }
+                                  controller.wishlistFunctionality
+                                      .removeProductFromWishlist(
+                                    context,
+                                    WishList(
+                                      productName: e.name,
+                                      productId: e.id,
+                                      productPrice: e.price,
+                                      productImage: e.imageUrl,
+                                      isFavourite: e.isFavorite.value,
+                                    ),
+                                  );
                                 }
                               },
                               icon: Obx(
