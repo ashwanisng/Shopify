@@ -8,18 +8,10 @@ class CartController extends GetxController {
 
   var totalCollection = 0.obs;
 
-  // ProductController productController = Get.find<ProductController>();
-
   CartFunctionalityController itemService =
       Get.find<CartFunctionalityController>();
   @override
   void onInit() {
-    for (var i = 0; i < itemService.items.length; i++) {
-      print(itemService.items[i].productName);
-    }
-    var res = itemService.items.length;
-    print('lenght is $res');
-
     super.onInit();
   }
 
