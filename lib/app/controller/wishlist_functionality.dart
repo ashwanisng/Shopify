@@ -9,8 +9,8 @@ class WishlistFunctionality extends GetxController {
     products.add(product);
   }
 
-  removeProductFromWishlist(BuildContext context, WishList product) {
-    products.remove(product);
+  removeProductFromWishlist(BuildContext context, int index) {
+    products.removeAt(index);
   }
 
   clearWishlist(BuildContext context, WishList product) {

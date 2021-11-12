@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/controller/wishlist_functionality.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
+import 'package:shopify/app/data/models/wishlist.dart';
 
 import 'package:shopify/app/modules/wishlist/controllers/wishlist_controller.dart';
 
@@ -23,9 +24,8 @@ class WishlistView extends GetView<WishlistController> {
         title: Text('Wishlist View'),
         centerTitle: true,
       ),
-      body: GetBuilder<WishlistFunctionality>(
-        init: WishlistFunctionality(),
-        builder: (value) => GridView.builder(
+      body: Obx(
+        () => GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: (itemWidth / itemHeight),
@@ -33,7 +33,7 @@ class WishlistView extends GetView<WishlistController> {
             // crossAxisSpacing: 10,
           ),
           itemBuilder: (context, index) {
-            var data = value.products[index];
+            var data = controller.wishlistFunctionality.products[index];
             return Card(
               elevation: 5,
               shape: RoundedRectangleBorder(
@@ -61,7 +61,26 @@ class WishlistView extends GetView<WishlistController> {
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            print(index);
+                            controller.wishlistFunctionality
+                                .removeProductFromWishlist(
+                              context,
+                              index,
+                            );
+
+                            data.isFavourite = false;
+
+                            Get.snackbar(
+                              "Item Removed",
+                              "",
+                              snackPosition: SnackPosition.BOTTOM,
+                              backgroundColor: Env.colors.primaryBlack,
+                              colorText: Env.colors.primaryWhite,
+                              dismissDirection:
+                                  SnackDismissDirection.HORIZONTAL,
+                            );
+                          },
                           icon: Icon(
                             Icons.close,
                             color: Env.colors.primaryRed,
@@ -141,7 +160,7 @@ class WishlistView extends GetView<WishlistController> {
               ),
             );
           },
-          itemCount: value.products.length,
+          itemCount: controller.wishlistFunctionality.products.length,
         ),
       ),
     );

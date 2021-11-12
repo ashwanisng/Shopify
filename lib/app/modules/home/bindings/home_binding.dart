@@ -11,6 +11,7 @@ class HomeBinding extends Bindings {
     );
     Get.lazyPut<WishlistFunctionality>(
       () => WishlistFunctionality(),
+      fenix: true,
     );
   }
 }

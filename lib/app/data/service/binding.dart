@@ -4,6 +4,7 @@ import 'package:shopify/app/modules/cart/controllers/cart_controller.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 import 'package:shopify/app/modules/product/controllers/product_controller.dart';
 import 'package:shopify/app/controller/cart_functionality.dart';
+import 'package:shopify/app/modules/wishlist/controllers/wishlist_controller.dart';
 
 class AllBinding extends Bindings {
   @override
@@ -24,6 +25,11 @@ class AllBinding extends Bindings {
     );
     Get.lazyPut<WishlistFunctionality>(
       () => WishlistFunctionality(),
+      fenix: true,
+    );
+    Get.lazyPut<WishlistController>(
+      () => WishlistController(),
+      fenix: true,
     );
   }
 }

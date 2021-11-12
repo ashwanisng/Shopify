@@ -144,18 +144,6 @@ class HomeScreenView extends GetView<HomeController> {
                                       isFavourite: e.isFavorite.value,
                                     ),
                                   );
-                                } else {
-                                  controller.wishlistFunctionality
-                                      .removeProductFromWishlist(
-                                    context,
-                                    WishList(
-                                      productName: e.name,
-                                      productId: e.id,
-                                      productPrice: e.price,
-                                      productImage: e.imageUrl,
-                                      isFavourite: e.isFavorite.value,
-                                    ),
-                                  );
                                 }
                               },
                               icon: Obx(

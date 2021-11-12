@@ -8,11 +8,12 @@ class WishlistBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<WishlistController>(
       () => WishlistController(),
+      fenix: true,
     );
 
-    Get.lazyPut<WishlistFunctionality>(
-      () => WishlistFunctionality(),
-      // fenix: true,
-    );
+    // Get.lazyPut<WishlistFunctionality>(
+    //   () => WishlistFunctionality(),
+    //   fenix: true,
+    // );
   }
 }
