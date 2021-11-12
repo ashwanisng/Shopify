@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_overrides, avoid_print
 
 import 'package:get/get.dart';
+import 'package:shopify/app/controller/wishlist_functionality.dart';
 import 'package:shopify/app/data/models/products.dart';
 import 'package:shopify/app/data/provider/products_data.dart';
 
@@ -56,13 +57,11 @@ class HomeController extends GetxController {
     ),
   ];
 
-  // ProductsData data = ProductsData();
+  WishlistFunctionality wishlistFunctionality =
+      Get.find<WishlistFunctionality>();
 
   @override
   void onInit() {
-    // dynamic data = Get.arguments;
-
-    // print(data);
     super.onInit();
   }
 

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shopify/app/controller/wishlist_functionality.dart';
 import 'package:shopify/app/modules/cart/controllers/cart_controller.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 import 'package:shopify/app/modules/product/controllers/product_controller.dart';
@@ -20,6 +21,9 @@ class AllBinding extends Bindings {
     );
     Get.lazyPut<CartFunctionalityController>(
       () => CartFunctionalityController(),
+    );
+    Get.lazyPut<WishlistFunctionality>(
+      () => WishlistFunctionality(),
     );
   }
 }

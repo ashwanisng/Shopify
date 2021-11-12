@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
+import 'package:shopify/app/data/models/wishlist.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 
 class HomeScreenView extends GetView<HomeController> {
@@ -130,7 +131,35 @@ class HomeScreenView extends GetView<HomeController> {
                                 e.isFavorite.value == true
                                     ? e.isFavorite.value = false
                                     : e.isFavorite.value = true;
-                                print("pressed : ${e.isFavorite}");
+
+                                if (e.isFavorite.isTrue) {
+                                  controller.wishlistFunctionality
+                                      .addProductToWishlist(
+                                    context,
+                                    WishList(
+                                      productName: e.name,
+                                      productId: e.id,
+                                      productPrice: e.price,
+                                      productImage: e.imageUrl,
+                                      isFavourite: e.isFavorite.value,
+                                    ),
+                                  );
+                                } else {
+                                  if (controller.wishlistFunctionality.products
+                                      .isNotEmpty) {
+                                    controller.wishlistFunctionality
+                                        .removeProductFromWishlist(
+                                      context,
+                                      WishList(
+                                        productName: e.name,
+                                        productId: e.id,
+                                        productPrice: e.price,
+                                        productImage: e.imageUrl,
+                                        isFavourite: e.isFavorite.value,
+                                      ),
+                                    );
+                                  }
+                                }
                               },
                               icon: Obx(
                                 () => e.isFavorite.value == true

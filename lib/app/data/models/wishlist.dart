@@ -1,7 +1,7 @@
 class WishList {
   String? productName;
   String? productImage;
-  String? productPrice;
+  double? productPrice;
   String? productId;
   bool isFavourite;
 
