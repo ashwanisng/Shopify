@@ -26,10 +26,22 @@ class TextStyles {
     fontWeight: FontWeight.w700,
     fontFamily: "Roboto",
   );
+  final TextStyle smallText = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    fontFamily: "Roboto",
+  );
 
   final TextStyle text = TextStyle(
     fontSize: 18,
     fontFamily: "Roboto",
+  );
+  final TextStyle headingStyle = TextStyle(
+    fontSize: 28,
+    fontFamily: "Roboto",
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    height: 1.5,
   );
 
   final TextStyle descriptiveItem = TextStyle(
