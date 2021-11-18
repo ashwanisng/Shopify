@@ -5,7 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:shopify/app/modules/home/views/home_view.dart';
 import 'package:shopify/app/modules/login/views/login_view.dart';
 
-class FirebaseAuthService extends GetxService {
+class FirebaseAuthService extends GetxController {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   final userData = GetStorage();
@@ -69,10 +69,10 @@ class FirebaseAuthService extends GetxService {
     }
   }
 
-  signOut() async {
+  void signOut() async {
     await firebaseAuth.signOut().then((value) {
       userData.remove("isLoggedIn");
-      return Get.offAll(LoginView());
+      return Get.offAll(() => LoginView());
     });
   }
 }

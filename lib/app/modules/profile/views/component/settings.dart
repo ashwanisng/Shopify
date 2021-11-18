@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shopify/app/global/firebase/auth/auth.dart';
-import 'package:shopify/app/modules/profile/controllers/profile_controller.dart';
+import 'package:shopify/app/modules/profile/controllers/setting_controller.dart';
 import 'package:shopify/app/utils/custom_card.dart';
 
-class Settings extends GetView<ProfileController> {
+class Settings extends GetView<SettingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,8 +11,8 @@ class Settings extends GetView<ProfileController> {
         title: Text('Settings'),
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        // height: MediaQuery.of(context).size.height,
+        // width: MediaQuery.of(context).size.width,
         child: CustomCardView(
           cardName: 'Sign Out',
           cardSubTitile: '',

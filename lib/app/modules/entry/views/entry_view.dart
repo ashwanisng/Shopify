@@ -12,9 +12,9 @@ class EntryView extends GetView<EntryController> {
 
   void checkIfLoggedInOrNot() {
     if (userData.read("isLoggedIn") == true) {
-      Get.offAll(HomeView());
+      Get.offAll(() => HomeView());
     } else {
-      Get.offAll(SignupView());
+      Get.offAll(() => SignupView());
     }
   }
 

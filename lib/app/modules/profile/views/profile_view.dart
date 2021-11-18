@@ -40,8 +40,8 @@ class ProfileView extends GetView<ProfileController> {
                       width: 64,
                       height: 64,
                       child: CircleAvatar(
-                        backgroundImage:
-                            NetworkImage('https://cdn.shopify.com/s/'),
+                        backgroundImage: NetworkImage(
+                            'https://images.unsplash.com/photo-1637181871441-3fd29405bba4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1947&q=80'),
                       ),
                     ),
                     Padding(
@@ -98,7 +98,8 @@ class ProfileView extends GetView<ProfileController> {
               cardSubTitile: "Theme, notifications",
               icon: Icons.arrow_forward_ios,
               onPress: () {
-                Get.offAll(Settings());
+                // Get.offAll(Settings());
+                controller.auth.signOut();
               },
             ),
           ],
