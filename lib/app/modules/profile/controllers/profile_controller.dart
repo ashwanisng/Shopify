@@ -1,9 +1,12 @@
 // ignore_for_file: unnecessary_overrides
 
 import 'package:get/get.dart';
+import 'package:shopify/app/global/firebase/auth/auth.dart';
 
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
+
+  FirebaseAuthService auth = Get.find<FirebaseAuthService>();
 
   @override
   void onInit() {

@@ -7,12 +7,14 @@ class CustomCardView extends StatelessWidget {
   final String? cardName;
   final String? cardSubTitile;
   final Function()? onPress;
+  final IconData? icon;
 
   // ignore: prefer_const_constructors_in_immutables
   CustomCardView({
     @required this.cardName,
-    @required this.cardSubTitile,
+    this.cardSubTitile,
     @required this.onPress,
+    @required this.icon,
   });
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class CustomCardView extends StatelessWidget {
         subtitle: Text(cardSubTitile!),
         trailing: IconButton(
           onPressed: onPress,
-          icon: const Icon(Icons.arrow_forward_ios),
+          icon: Icon(icon),
         ),
       ),
     );

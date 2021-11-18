@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'package:shopify/app/modules/entry/controllers/entry_controller.dart';
+import 'package:shopify/app/modules/home/views/home_view.dart';
 import 'package:shopify/app/modules/signup/views/signup_view.dart';
 
 class EntryView extends GetView<EntryController> {
+  final userData = GetStorage();
+
+  void checkIfLoggedInOrNot() {
+    if (userData.read("isLoggedIn") == true) {
+      Get.offAll(HomeView());
+    } else {
+      Get.offAll(SignupView());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offAll(SignupView());
+      checkIfLoggedInOrNot();
     });
 
     return Scaffold(

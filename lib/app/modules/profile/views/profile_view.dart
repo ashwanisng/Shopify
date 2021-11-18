@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
 
 import 'package:shopify/app/modules/profile/controllers/profile_controller.dart';
+import 'package:shopify/app/modules/profile/views/component/settings.dart';
 import 'package:shopify/app/utils/custom_card.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -65,32 +66,40 @@ class ProfileView extends GetView<ProfileController> {
             CustomCardView(
               cardName: "My Orders",
               cardSubTitile: "Already have 12 orders",
+              icon: Icons.arrow_forward_ios,
               onPress: () {},
             ),
             CustomCardView(
               cardName: 'My Addresses',
               cardSubTitile: "3 Addresses",
+              icon: Icons.arrow_forward_ios,
               onPress: () {},
             ),
             CustomCardView(
               cardName: 'Payment Method',
               cardSubTitile: "Visa **34",
+              icon: Icons.arrow_forward_ios,
               onPress: () {},
             ),
             CustomCardView(
               cardName: 'Promocodes',
               cardSubTitile: "You have special promocodes",
+              icon: Icons.arrow_forward_ios,
               onPress: () {},
             ),
             CustomCardView(
               cardName: 'My reviews',
               cardSubTitile: "Reviews for 4 items",
+              icon: Icons.arrow_forward_ios,
               onPress: () {},
             ),
             CustomCardView(
               cardName: 'Settings',
               cardSubTitile: "Theme, notifications",
-              onPress: () {},
+              icon: Icons.arrow_forward_ios,
+              onPress: () {
+                Get.offAll(Settings());
+              },
             ),
           ],
         ),
