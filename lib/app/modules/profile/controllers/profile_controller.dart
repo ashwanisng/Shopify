@@ -6,7 +6,7 @@ import 'package:shopify/app/global/firebase/auth/auth.dart';
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
 
-  FirebaseAuthService auth = Get.find<FirebaseAuthService>();
+  // FirebaseAuthService auth = Get.find<FirebaseAuthService>();
 
   @override
   void onInit() {

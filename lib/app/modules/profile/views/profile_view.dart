@@ -98,8 +98,8 @@ class ProfileView extends GetView<ProfileController> {
               cardSubTitile: "Theme, notifications",
               icon: Icons.arrow_forward_ios,
               onPress: () {
-                // Get.offAll(Settings());
-                controller.auth.signOut();
+                Get.offAll(Settings());
+                // controller.auth.signOut();
               },
             ),
           ],

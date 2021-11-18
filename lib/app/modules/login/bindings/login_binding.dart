@@ -3,7 +3,6 @@ import 'package:shopify/app/global/firebase/auth/auth.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 
 import 'package:shopify/app/modules/login/controllers/login_controller.dart';
-import 'package:shopify/app/modules/profile/controllers/setting_controller.dart';
 
 class LoginBinding extends Bindings {
   @override

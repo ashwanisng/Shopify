@@ -55,10 +55,10 @@ class AllBinding extends Bindings {
       () => ProfileController(),
       fenix: true,
     );
-    // Get.lazyPut<SettingController>(
-    //   () => SettingController(),
-    //   fenix: true,
-    // );
+    Get.lazyPut<SettingController>(
+      () => SettingController(),
+      fenix: true,
+    );
 
     Get.lazyPut<EntryController>(
       () => EntryController(),
