@@ -1,10 +1,11 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
 
 import 'package:shopify/app/modules/login/controllers/login_controller.dart';
-import 'package:shopify/app/modules/signup/views/signup_view.dart';
 import 'package:shopify/app/utils/custom_button.dart';
 
 class LoginView extends GetView<LoginController> {

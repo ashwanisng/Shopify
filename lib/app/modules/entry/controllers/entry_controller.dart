@@ -1,13 +1,9 @@
-// ignore_for_file: file_names, unnecessary_overrides
+// ignore_for_file: unnecessary_overrides
 
 import 'package:get/get.dart';
 
-class LandingPageController extends GetxController {
-  var slectedIndex = 0.obs;
-
-  void changeIndex(int index) {
-    slectedIndex.value = index;
-  }
+class EntryController extends GetxController {
+  //TODO: Implement EntryController
 
   @override
   void onInit() {

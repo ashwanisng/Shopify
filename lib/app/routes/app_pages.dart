@@ -4,6 +4,8 @@ import 'package:shopify/app/modules/cart/bindings/cart_binding.dart';
 import 'package:shopify/app/modules/cart/views/cart_view.dart';
 import 'package:shopify/app/modules/category/bindings/category_binding.dart';
 import 'package:shopify/app/modules/category/views/category_view.dart';
+import 'package:shopify/app/modules/entry/bindings/entry_binding.dart';
+import 'package:shopify/app/modules/entry/views/entry_view.dart';
 import 'package:shopify/app/modules/home/bindings/home_binding.dart';
 import 'package:shopify/app/modules/home/views/home_view.dart';
 import 'package:shopify/app/modules/login/bindings/login_binding.dart';
@@ -22,7 +24,7 @@ import 'package:shopify/app/modules/wishlist/views/wishlist_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.SIGNUP;
+  static const INITIAL = Routes.ENTRY;
 
   static final routes = [
     GetPage(
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.SIGNUP,
       page: () => SignupView(),
       binding: SignupBinding(),
+    ),
+    GetPage(
+      name: _Paths.ENTRY,
+      page: () => EntryView(),
+      binding: EntryBinding(),
     ),
   ];
 }

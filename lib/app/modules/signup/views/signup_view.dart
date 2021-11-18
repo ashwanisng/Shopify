@@ -14,13 +14,7 @@ class SignupView extends GetView<SignupController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     'Sign Up',
-      //     style: Env.textStyles.subheads,
-      //   ),
-      //   centerTitle: true,
-      // ),
+    
       body: SingleChildScrollView(
         child: Container(
           constraints: BoxConstraints(
@@ -166,7 +160,11 @@ class SignupView extends GetView<SignupController> {
 
                         const SizedBox(height: 20),
 
-                        CustomButton(buttonText: "Sign Up", onPressed: () {}),
+                        CustomButton(
+                            buttonText: "Sign Up",
+                            onPressed: () {
+                              Get.toNamed('/home');
+                            }),
 
                         const SizedBox(height: 20),
 
