@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:shopify/app/controller/wishlist_functionality.dart';
 import 'package:shopify/app/global/firebase/auth/auth.dart';
+import 'package:shopify/app/global/firebase/database/db.dart';
 import 'package:shopify/app/modules/cart/controllers/cart_controller.dart';
+import 'package:shopify/app/modules/category/controllers/category_controller.dart';
 import 'package:shopify/app/modules/entry/controllers/entry_controller.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 import 'package:shopify/app/modules/login/controllers/login_controller.dart';
@@ -62,6 +64,16 @@ class AllBinding extends Bindings {
 
     Get.lazyPut<EntryController>(
       () => EntryController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<CategoryController>(
+      () => CategoryController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<Database>(
+      () => Database(),
       fenix: true,
     );
   }

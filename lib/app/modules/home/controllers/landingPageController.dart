@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, unnecessary_overrides
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class LandingPageController extends GetxController {

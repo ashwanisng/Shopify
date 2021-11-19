@@ -5,12 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
-import 'package:shopify/app/data/models/wishlist.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 
 class HomeScreenView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -74,12 +74,38 @@ class HomeScreenView extends GetView<HomeController> {
           Container(
             padding: EdgeInsets.all(10),
             child: Text(
-              "New",
+              controller.items.length.toString(),
               style: Env.textStyles.headline,
             ),
           ),
           Expanded(
-            child: GridView.count(
+            child: GridView.builder(
+              itemCount: controller.items.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                var data = controller.items[index];
+                return Card(
+                  child: GridTile(
+                    child: Image.network(
+                      data['productImage'],
+                    ),
+                    footer: Text(data['productPrice'].toString()),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/**
+ * 
+ * GridView.count(
               crossAxisCount: 2,
               padding: EdgeInsets.all(20),
               crossAxisSpacing: 10,
@@ -128,11 +154,11 @@ class HomeScreenView extends GetView<HomeController> {
                             ),
                             IconButton(
                               onPressed: () {
-                                e.isFavorite.value == true
-                                    ? e.isFavorite.value = false
-                                    : e.isFavorite.value = true;
+                                e.isFavorite!.value == true
+                                    ? e.isFavorite!.value = false
+                                    : e.isFavorite!.value = true;
 
-                                if (e.isFavorite.value == true) {
+                                if (e.isFavorite!.value == true) {
                                   controller.wishlistFunctionality
                                       .addProductToWishlist(
                                     context,
@@ -141,13 +167,13 @@ class HomeScreenView extends GetView<HomeController> {
                                       productId: e.id,
                                       productPrice: e.price,
                                       productImage: e.imageUrl,
-                                      isFavourite: e.isFavorite.value,
+                                      isFavourite: e.isFavorite!.value,
                                     ),
                                   );
                                 }
                               },
                               icon: Obx(
-                                () => e.isFavorite.value == true
+                                () => e.isFavorite!.value == true
                                     ? Icon(
                                         CupertinoIcons.heart_fill,
                                         color: Colors.red,
@@ -171,13 +197,7 @@ class HomeScreenView extends GetView<HomeController> {
                 },
               ).toList(),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
+ */
 class MyImageView extends StatelessWidget {
   String path;
   MyImageView(this.path);

@@ -10,16 +10,30 @@ class CategoryView extends GetView<CategoryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('CategoryView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'CategoryView is working',
-          style: TextStyle(fontSize: 20),
+        appBar: AppBar(
+          title: Text('CategoryView'),
+          centerTitle: true,
         ),
-      ),
-    );
+        body: Container()
+        // RefreshIndicator(
+        //   key: controller.indicator,
+        //   onRefresh: controller.refreshProducts,
+        //   child: ListView.builder(
+        //     itemCount: controller.items.length,
+        //     itemBuilder: (context, index) {
+        //       return ListTile(
+        //         leading: Image.network(
+        //           controller.items[index]["productImage"],
+        //           width: 50,
+        //           height: 50,
+        //         ),
+        //         title: Text(controller.items[index]['productName']),
+        //         subtitle:
+        //             Text(controller.items[index]['productPrice'].toString()),
+        //       );
+        //     },
+        //   ),
+        // ),
+        );
   }
 }
