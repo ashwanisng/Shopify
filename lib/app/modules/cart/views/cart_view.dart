@@ -67,92 +67,121 @@ class CartView extends GetView<CartController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  // height: 100,
-                                  width: 120,
-                                  child: Image.network(
-                                    data.docs[index]["productImage"],
-                                    fit: BoxFit.cover,
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      // height: 100,
+
+                                      width: 120,
+                                      child: Image.network(
+                                        data.docs[index]["productImage"],
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      data.docs[index]["productName"],
-                                      style: TextStyle(
-                                        color: Env.colors.primaryBlack,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Flexible(
+                                        child: Text(
+                                          data.docs[index]["productName"],
+                                          style: TextStyle(
+                                            color: Env.colors.primaryBlack,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "56",
-                                      style: TextStyle(
-                                        color: Env.colors.primaryBlack,
+                                      Flexible(
+                                        child: Text(
+                                          "XL",
+                                          style: TextStyle(
+                                            color: Env.colors.primaryBlack,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            if (controller
-                                                    .totalCollection.value <=
-                                                0) {
-                                              controller.totalCollection.value =
-                                                  0;
-                                            } else {
-                                              controller
-                                                  .totalCollection.value--;
-                                            }
-                                          },
-                                          icon: Icon(
-                                            CupertinoIcons.minus_circle_fill,
-                                            color: Env.colors.primaryGray,
-                                          ),
+                                      Expanded(
+                                        child: Row(
+                                          children: [
+                                            IconButton(
+                                              onPressed: () {
+                                                if (controller.totalCollection
+                                                        .value <=
+                                                    0) {
+                                                  controller.totalCollection
+                                                      .value = 0;
+                                                } else {
+                                                  controller
+                                                      .totalCollection.value--;
+                                                }
+                                              },
+                                              icon: Icon(
+                                                CupertinoIcons
+                                                    .minus_circle_fill,
+                                                color: Env.colors.primaryGray,
+                                              ),
+                                            ),
+                                            Obx(
+                                              () => Text(
+                                                "${controller.totalCollection.value}",
+                                                style: TextStyle(fontSize: 16),
+                                              ),
+                                            ),
+                                            IconButton(
+                                              onPressed: () {
+                                                controller
+                                                    .totalCollection.value++;
+                                              },
+                                              icon: Icon(
+                                                CupertinoIcons
+                                                    .add_circled_solid,
+                                                color: Env.colors.primaryGray,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        Obx(
-                                          () => Text(
-                                            "${controller.totalCollection.value}",
-                                            style: TextStyle(fontSize: 16),
-                                          ),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            controller.totalCollection.value++;
-                                          },
-                                          icon: Icon(
-                                            CupertinoIcons.add_circled_solid,
-                                            color: Env.colors.primaryGray,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.more_vert,
-                                        color: Env.colors.primaryGray,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Rs.${data.docs[index]["productPrice"].toString()}",
-                                        style: TextStyle(
-                                          color: Env.colors.primaryBlack,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Flexible(
+                                        child: IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(
+                                            Icons.more_vert,
+                                            color: Env.colors.primaryGray,
+                                          ),
                                         ),
                                       ),
-                                    )
-                                  ],
+                                      Flexible(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: SizedBox(
+                                            child: RichText(
+                                              text: TextSpan(
+                                                text:
+                                                    "Rs.${data.docs[index]["productPrice"].toString()}",
+                                                style: TextStyle(
+                                                  color: Env.colors.primaryRed,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
