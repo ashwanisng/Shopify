@@ -28,7 +28,7 @@ class AllBinding extends Bindings {
     );
     Get.lazyPut<HomeController>(
       () => HomeController(),
-      // fenix: true,
+      fenix: true,
     );
     Get.lazyPut<CartFunctionalityController>(
       () => CartFunctionalityController(),

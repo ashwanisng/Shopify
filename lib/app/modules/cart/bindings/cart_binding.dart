@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shopify/app/global/firebase/database/cart_db.dart';
 
 import 'package:shopify/app/modules/cart/controllers/cart_controller.dart';
 import 'package:shopify/app/modules/product/controllers/product_controller.dart';
@@ -13,6 +14,11 @@ class CartBinding extends Bindings {
 
     Get.lazyPut<ProductController>(
       () => ProductController(),
+      fenix: true,
+    );
+
+    Get.lazyPut<CartDataBase>(
+      () => CartDataBase(),
       fenix: true,
     );
   }
