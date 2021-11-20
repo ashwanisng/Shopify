@@ -9,9 +9,10 @@ class ProductController extends GetxController {
 
   String? productId;
   String? productName;
-  String? productDescription;
-  double? productPrice;
+  dynamic productPrice;
   String? productImage;
+  String? productDescription;
+
   RxString choosenSize = "".obs;
 
   CartFunctionalityController itemService =
@@ -31,11 +32,15 @@ class ProductController extends GetxController {
   void onInit() {
     var data = Get.arguments;
 
-    productId = data[0];
-    productName = data[1];
-    productPrice = data[2];
-    productImage = data[3];
-    productDescription = data[4];
+    print(data);
+
+    productId = data["productId"];
+    productName = data["productName"];
+    productPrice = data["productPrice"];
+    productImage = data["productImage"];
+    productDescription = data["productDescription"];
+
+    print(productDescription);
 
     super.onInit();
   }

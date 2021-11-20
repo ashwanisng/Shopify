@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
 import 'package:shopify/app/data/models/cart.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
+import 'package:shopify/app/modules/product/views/product_view.dart';
 
 class HomeScreenView extends GetView<HomeController> {
   @override
@@ -103,11 +104,27 @@ class HomeScreenView extends GetView<HomeController> {
                     borderRadius: BorderRadius.circular(20),
                     child: Stack(
                       children: [
-                        Image.network(
-                          data['productImage'],
-                          fit: BoxFit.fitWidth,
-                          height: 150,
-                          width: 200,
+                        GestureDetector(
+                          onTap: () {
+                            print(data["productId"]);
+                            Get.to(
+                              () => ProductView(),
+                              arguments: {
+                                'productId': data["productId"],
+                                'productName': data["productName"],
+                                'productPrice': data["productPrice"],
+                                'productDescription':
+                                    data["productDiscription"],
+                                'productImage': data["productImage"],
+                              },
+                            );
+                          },
+                          child: Image.network(
+                            data['productImage'],
+                            fit: BoxFit.fitWidth,
+                            height: 150,
+                            width: 200,
+                          ),
                         ),
                         Positioned(
                           top: 0,

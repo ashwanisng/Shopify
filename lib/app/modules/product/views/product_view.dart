@@ -130,7 +130,7 @@ class ProductView extends GetView<ProductController> {
                 ),
                 Container(
                   child: Text(
-                    "Price : ${controller.productPrice!.toString()}",
+                    "Price : ${controller.productPrice.toString()}",
                     style: Env.textStyles.headline3,
                   ),
                 ),
@@ -153,16 +153,16 @@ class ProductView extends GetView<ProductController> {
             child: CustomButton(
               buttonText: "ADD TO CART",
               onPressed: () {
-                controller.itemService.addToCart(
-                  context,
-                  CartItem(
-                    productId: controller.productId!,
-                    productImageUrl: controller.productImage!,
-                    productName: controller.productName!,
-                    productPrice: controller.productPrice!,
-                    productSize: controller.choosenSize.value,
-                  ),
-                );
+                // controller.itemService.addToCart(
+                //   context,
+                //   CartItem(
+                //     productId: controller.productId!,
+                //     productImageUrl: controller.productImage!,
+                //     productName: controller.productName!,
+                //     productPrice: controller.productPrice!,
+                //     productSize: controller.choosenSize.value,
+                //   ),
+                // );
               },
             ),
           ),
