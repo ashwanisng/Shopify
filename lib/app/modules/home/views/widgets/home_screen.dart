@@ -185,12 +185,15 @@ class HomeScreenView extends GetView<HomeController> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(5, 8, 0, 2),
-                                child: Text(
-                                  data['productName'],
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Roboto',
+                                child: Flexible(
+                                  child: Text(
+                                    data["productName"],
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.w500,
+                                      color: Env.colors.primaryBlack,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -199,22 +202,27 @@ class HomeScreenView extends GetView<HomeController> {
                                 padding: const EdgeInsets.fromLTRB(5, 0, 0, 2),
                                 child: Row(
                                   children: [
-                                    Text(
-                                      'Price: ',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Roboto',
+                                    Flexible(
+                                      child: Text(
+                                        'Price: ',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Roboto',
+                                        ),
                                       ),
                                     ),
-                                    Text(
-                                      data["productPrice"].toString(),
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Roboto',
+                                    Flexible(
+                                      child: Text(
+                                        data["productPrice"].toString(),
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Roboto',
+                                          color: Env.colors.primaryRed,
+                                        ),
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               )
