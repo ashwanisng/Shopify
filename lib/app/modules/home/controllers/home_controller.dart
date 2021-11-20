@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/controller/wishlist_functionality.dart';
 import 'package:shopify/app/data/models/products.dart';
+import 'package:shopify/app/global/firebase/database/cart_db.dart';
 import 'package:shopify/app/global/firebase/database/db.dart';
 
 class HomeController extends GetxController {
@@ -13,49 +14,31 @@ class HomeController extends GetxController {
   GlobalKey<RefreshIndicatorState> indicator =
       GlobalKey<RefreshIndicatorState>();
 
-  CollectionReference collectionReference =
-      FirebaseFirestore.instance.collection('productData');
+  WishlistFunctionality wishlistFunctionality =
+      Get.find<WishlistFunctionality>();
 
-  // Database db = Get.find<Database>();
+  Database db = Get.find<Database>();
 
-  var items = [];
-
-  // List items = [];
+  CartDataBase cartDataBase = Get.find<CartDataBase>();
 
   int currentPos = 0;
   List<String> listPaths = [
     "assets/images/img1.jpg",
     "assets/images/img2.jpg",
     "assets/images/img3.jpg",
-    "assets/images/img4.jpg",
     "assets/images/img5.jpg",
     "assets/images/img6.jpg",
   ];
 
-  fetchProductsFromTheDatabase() async {
-    QuerySnapshot querySnapshot = await collectionReference.get();
-
-    items =
-        querySnapshot.docs.map((DocumentSnapshot doc) => doc.data()).toList();
-  }
-
-  Future refreshProducts() {
-    return fetchProductsFromTheDatabase();
-  }
-
-  WishlistFunctionality wishlistFunctionality =
-      Get.find<WishlistFunctionality>();
-
   @override
   void onInit() {
-    fetchProductsFromTheDatabase();
+    db.fetchProductsFromTheDatabase();
     super.onInit();
   }
 
   @override
   void onReady() {
     super.onReady();
-    fetchProductsFromTheDatabase();
   }
 
   @override

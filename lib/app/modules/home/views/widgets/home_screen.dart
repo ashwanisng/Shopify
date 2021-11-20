@@ -5,12 +5,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
+import 'package:shopify/app/data/models/cart.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 
 class HomeScreenView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    final orientation = MediaQuery.of(context).orientation;
+    var size = MediaQuery.of(context).size;
+
+    /*24 is for notification bar on Android*/
+    final double itemHeight = (size.height - kToolbarHeight - 8) / 2.8;
+    final double itemWidth = size.width / 2;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -74,27 +80,153 @@ class HomeScreenView extends GetView<HomeController> {
           Container(
             padding: EdgeInsets.all(10),
             child: Text(
-              controller.items.length.toString(),
+              controller.db.items.length.toString(),
               style: Env.textStyles.headline,
             ),
           ),
           Expanded(
             child: GridView.builder(
-              itemCount: controller.items.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
+                crossAxisCount: 2,
+                childAspectRatio: (itemWidth / itemHeight),
+
+                // crossAxisSpacing: 10,
               ),
-              itemBuilder: (BuildContext context, int index) {
-                var data = controller.items[index];
+              itemBuilder: (context, index) {
+                var data = controller.db.items[index];
                 return Card(
-                  child: GridTile(
-                    child: Image.network(
-                      data['productImage'],
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Stack(
+                      children: [
+                        Image.network(
+                          data['productImage'],
+                          fit: BoxFit.fitWidth,
+                          height: 150,
+                          width: 200,
+                        ),
+                        Positioned(
+                          top: 0,
+                          bottom: 214,
+                          left: 132,
+                          right: 0,
+                          child: Container(
+                            alignment: Alignment.topRight,
+                            decoration: BoxDecoration(
+                              color: Env.colors.primaryWhite,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: IconButton(
+                              onPressed: () {
+                                controller.wishlistFunctionality
+                                    .removeProductFromWishlist(
+                                  context,
+                                  index,
+                                );
+
+                                data.isFavourite = false;
+
+                                Get.snackbar(
+                                  "Item Removed",
+                                  "",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Env.colors.primaryBlack,
+                                  colorText: Env.colors.primaryWhite,
+                                  dismissDirection:
+                                      SnackDismissDirection.HORIZONTAL,
+                                );
+                              },
+                              icon: Icon(
+                                CupertinoIcons.heart_solid,
+                                color: Env.colors.primaryRed,
+                                // size: 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 128,
+                          bottom: 80,
+                          left: 125,
+                          right: 0,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Env.colors.primaryRed,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: IconButton(
+                              onPressed: () {
+                                controller.cartDataBase.addProductToCart(
+                                  productId: data["productId"],
+                                  productImage: data["productImage"],
+                                  productName: data["productName"],
+                                  productPrice: data["productPrice"],
+                                );
+                              },
+                              icon: Icon(
+                                CupertinoIcons.bag_fill,
+                                color: Env.colors.primaryWhite,
+                                // size: 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          // height: 30,
+                          // width: 90,
+                          margin: EdgeInsets.only(top: 152, left: 5),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(5, 8, 0, 2),
+                                child: Text(
+                                  data['productName'],
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Roboto',
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(5, 0, 0, 2),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Price: ',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Roboto',
+                                      ),
+                                    ),
+                                    Text(
+                                      data["productPrice"].toString(),
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Roboto',
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    footer: Text(data['productPrice'].toString()),
                   ),
                 );
               },
+              itemCount: controller.db.items.length,
             ),
           ),
         ],
