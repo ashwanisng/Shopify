@@ -15,6 +15,8 @@ class ProductController extends GetxController {
 
   RxString choosenSize = "".obs;
 
+  var isFavorite = false.obs;
+
   CartFunctionalityController itemService =
       Get.find<CartFunctionalityController>();
 
@@ -22,25 +24,17 @@ class ProductController extends GetxController {
     choosenSize.value = value;
   }
 
-  // var items = <CartItem>[].obs;
-
-  // void addToCart(CartItem addProduct) {
-  //   items.add(addProduct);
-  // }
-
   @override
   void onInit() {
     var data = Get.arguments;
 
-    print(data);
-
+    print(data['isFavourite']);
     productId = data["productId"];
     productName = data["productName"];
     productPrice = data["productPrice"];
     productImage = data["productImage"];
     productDescription = data["productDescription"];
-
-    print(productDescription);
+    isFavorite = data["isFavourite"];
 
     super.onInit();
   }

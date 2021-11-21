@@ -44,129 +44,142 @@ class ProductView extends GetView<ProductController> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 2,
-            child: Center(
-              child: Image.network(
-                controller.productImage!,
-                fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height / 2,
+              child: Center(
+                child: Image.network(
+                  controller.productImage!,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 5),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 100,
-                  height: 60,
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Obx(
-                    () => DropdownButton<String>(
-                      value: controller.choosenSize.value.isNotEmpty
-                          ? controller.choosenSize.value
-                          : null,
-                      key: UniqueKey(),
-                      icon: Icon(
-                        Icons.arrow_drop_down,
-                        color: Env.colors.primaryBlack,
+            SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 60,
+                    margin: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 2,
                       ),
-                      iconSize: 24,
-                      elevation: 16,
-                      style: TextStyle(color: Env.colors.primaryBlack),
-                      items: <String>['XS', 'S', 'M', 'L', 'XL']
-                          .map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (dynamic newValue) {
-                        controller.setSelected(newValue);
-                      },
-                      hint: Text(
-                        'Size',
-                        style: TextStyle(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Obx(
+                      () => DropdownButton<String>(
+                        value: controller.choosenSize.value.isNotEmpty
+                            ? controller.choosenSize.value
+                            : null,
+                        key: UniqueKey(),
+                        icon: Icon(
+                          Icons.arrow_drop_down,
                           color: Env.colors.primaryBlack,
-                          fontSize: 16,
+                        ),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: TextStyle(color: Env.colors.primaryBlack),
+                        items: <String>['XS', 'S', 'M', 'L', 'XL']
+                            .map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (dynamic newValue) {
+                          controller.setSelected(newValue);
+                        },
+                        hint: Text(
+                          'Size',
+                          style: TextStyle(
+                            color: Env.colors.primaryBlack,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    CupertinoIcons.heart,
-                    size: 30,
+                  IconButton(
+                    onPressed: () {},
+                    icon: Obx(
+                      () => controller.isFavorite.value == true
+                          ? Icon(
+                              CupertinoIcons.heart_solid,
+                              color: Colors.red,
+                              size: 30,
+                            )
+                          : Icon(
+                              CupertinoIcons.heart,
+                              size: 30,
+                            ),
+                    ),
                   ),
-                )
-              ],
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                child: Flexible(
                   child: Text(
                     controller.productName!,
                     style: Env.textStyles.headline,
                   ),
                 ),
-                Container(
-                  child: Text(
-                    "Price : ${controller.productPrice.toString()}",
-                    style: Env.textStyles.headline3,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              child: Text(
-                controller.productDescription!,
-                style: Env.textStyles.text,
               ),
             ),
-          ),
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: CustomButton(
-              buttonText: "ADD TO CART",
-              onPressed: () {
-                // controller.itemService.addToCart(
-                //   context,
-                //   CartItem(
-                //     productId: controller.productId!,
-                //     productImageUrl: controller.productImage!,
-                //     productName: controller.productName!,
-                //     productPrice: controller.productPrice!,
-                //     productSize: controller.choosenSize.value,
-                //   ),
-                // );
-              },
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                child: Text(
+                  "Price : ${controller.productPrice.toString()}",
+                  textAlign: TextAlign.end,
+                  style: Env.textStyles.headline3,
+                ),
+              ),
             ),
-          ),
-        ],
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                child: Text(
+                  controller.productDescription!,
+                  style: Env.textStyles.text,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CustomButton(
+                buttonText: "ADD TO CART",
+                onPressed: () {
+                  // controller.itemService.addToCart(
+                  //   context,
+                  //   CartItem(
+                  //     productId: controller.productId!,
+                  //     productImageUrl: controller.productImage!,
+                  //     productName: controller.productName!,
+                  //     productPrice: controller.productPrice!,
+                  //     productSize: controller.choosenSize.value,
+                  //   ),
+                  // );
+                },
+              ),
+            ),
+            SizedBox(height: 10),
+          ],
+        ),
       ),
     );
   }

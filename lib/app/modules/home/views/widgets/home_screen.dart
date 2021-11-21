@@ -109,7 +109,6 @@ class HomeScreenView extends GetView<HomeController> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            print(data["productId"]);
                             Get.to(
                               () => ProductView(),
                               arguments: {
@@ -119,6 +118,7 @@ class HomeScreenView extends GetView<HomeController> {
                                 'productDescription':
                                     data["productDiscription"],
                                 'productImage': data["productImage"],
+                                'isFavourite': fav,
                               },
                             );
                           },
@@ -145,13 +145,6 @@ class HomeScreenView extends GetView<HomeController> {
                                 fav.value == true
                                     ? fav.value = false
                                     : fav.value = true;
-
-                                // print(data["productId"]);
-                                // print(data["productName"]);
-                                // print(data["productImage"]);
-                                // print(data["productPrice"]);
-                                // print(data["productDiscription"]);
-                                // print(fav);
 
                                 if (fav.value == true) {
                                   controller.wishlistDatabase
