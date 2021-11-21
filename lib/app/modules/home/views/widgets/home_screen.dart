@@ -164,6 +164,13 @@ class HomeScreenView extends GetView<HomeController> {
                                         data["productDiscription"],
                                     isFavourite: fav,
                                   );
+                                } else {
+                                  // fav.value = false;
+                                  print(fav.value);
+                                  controller.wishlistDatabase
+                                      .removeProductFromWishlist(
+                                    data["productId"],
+                                  );
                                 }
                               },
                               icon: Obx(

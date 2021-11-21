@@ -34,7 +34,44 @@ class WishlistDatabase extends GetxController {
 
       Get.snackbar(
         "Success!",
-        "Data Uploaded!",
+        "Product added to wishlist!",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.black,
+        colorText: Colors.white,
+        isDismissible: true,
+      );
+    } catch (e) {
+      Get.snackbar(
+        "Error!",
+        "Please Try Again!",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.black,
+        colorText: Colors.white,
+        isDismissible: true,
+      );
+    }
+  }
+
+  removeProductFromWishlist(String productId) async {
+    final User? user = auth.currentUser;
+    final uid = user!.uid;
+
+    try {
+      wishlistCollection.doc(uid).collection("wishlist");
+
+      QuerySnapshot querySnapshot = await wishlistCollection
+          .doc(uid)
+          .collection("wishlist")
+          .where('productId', isEqualTo: productId)
+          .get();
+
+      for (var doc in querySnapshot.docs) {
+        await doc.reference.delete();
+      }
+
+      Get.snackbar(
+        "Success!",
+        "Product Removed from wishlist!",
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.black,
         colorText: Colors.white,
