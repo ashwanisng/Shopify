@@ -1,8 +1,9 @@
 class WishList {
+  String? productId;
   String? productName;
   String? productImage;
   double? productPrice;
-  String? productId;
+  String? productDescription;
   bool isFavourite;
 
   WishList({
@@ -10,6 +11,7 @@ class WishList {
     this.productImage,
     this.productPrice,
     this.productId,
+    this.productDescription,
     this.isFavourite = true,
   });
 }

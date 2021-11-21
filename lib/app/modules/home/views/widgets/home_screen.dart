@@ -95,6 +95,9 @@ class HomeScreenView extends GetView<HomeController> {
               ),
               itemBuilder: (context, index) {
                 var data = controller.db.items[index];
+                var val = data["isFavourite"];
+                RxBool fav = RxBool(val);
+                print(fav);
                 return Card(
                   elevation: 5,
                   shape: RoundedRectangleBorder(
@@ -139,28 +142,38 @@ class HomeScreenView extends GetView<HomeController> {
                             ),
                             child: IconButton(
                               onPressed: () {
-                                controller.wishlistFunctionality
-                                    .removeProductFromWishlist(
-                                  context,
-                                  index,
-                                );
+                                fav.value == true
+                                    ? fav.value = false
+                                    : fav.value = true;
 
-                                data.isFavourite = false;
+                                // print(data["productId"]);
+                                // print(data["productName"]);
+                                // print(data["productImage"]);
+                                // print(data["productPrice"]);
+                                // print(data["productDiscription"]);
+                                // print(fav);
 
-                                Get.snackbar(
-                                  "Item Removed",
-                                  "",
-                                  snackPosition: SnackPosition.BOTTOM,
-                                  backgroundColor: Env.colors.primaryBlack,
-                                  colorText: Env.colors.primaryWhite,
-                                  dismissDirection:
-                                      SnackDismissDirection.HORIZONTAL,
-                                );
+                                if (fav.value == true) {
+                                  controller.wishlistDatabase
+                                      .addProductToWishlist(
+                                    productId: data["productId"],
+                                    productName: data["productName"],
+                                    productImage: data["productImage"],
+                                    productPrice: data["productPrice"],
+                                    productDescription:
+                                        data["productDiscription"],
+                                    isFavourite: fav,
+                                  );
+                                }
                               },
-                              icon: Icon(
-                                CupertinoIcons.heart_solid,
-                                color: Env.colors.primaryRed,
-                                // size: 30,
+                              icon: Obx(
+                                () => fav.value == true
+                                    ? Icon(
+                                        CupertinoIcons.heart_fill,
+                                        color: Colors.red,
+                                        size: 35,
+                                      )
+                                    : Icon(CupertinoIcons.heart),
                               ),
                             ),
                           ),
