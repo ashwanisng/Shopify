@@ -12,6 +12,7 @@ import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 import 'package:shopify/app/modules/login/controllers/login_controller.dart';
 import 'package:shopify/app/modules/product/controllers/product_controller.dart';
 import 'package:shopify/app/controller/cart_functionality.dart';
+import 'package:shopify/app/modules/profile/controllers/address_controller.dart';
 import 'package:shopify/app/modules/profile/controllers/edit_address_controller.dart';
 import 'package:shopify/app/modules/profile/controllers/profile_controller.dart';
 import 'package:shopify/app/modules/profile/controllers/setting_controller.dart';
@@ -94,6 +95,10 @@ class AllBinding extends Bindings {
     );
     Get.lazyPut<AddressDatabase>(
       () => AddressDatabase(),
+      fenix: true,
+    );
+    Get.lazyPut<AddressController>(
+      () => AddressController(),
       fenix: true,
     );
   }
