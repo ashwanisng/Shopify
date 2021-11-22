@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
 
 import 'package:shopify/app/modules/profile/controllers/profile_controller.dart';
+import 'package:shopify/app/modules/profile/views/component/address.dart';
 import 'package:shopify/app/modules/profile/views/component/settings.dart';
 import 'package:shopify/app/utils/custom_card.dart';
 
@@ -73,7 +74,9 @@ class ProfileView extends GetView<ProfileController> {
               cardName: 'My Addresses',
               cardSubTitile: "3 Addresses",
               icon: Icons.arrow_forward_ios,
-              onPress: () {},
+              onPress: () {
+                Get.to(() => AddressView());
+              },
             ),
             CustomCardView(
               cardName: 'Payment Method',

@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
-import 'package:shopify/app/data/models/cart.dart';
 import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 import 'package:shopify/app/modules/product/views/product_view.dart';
 
@@ -158,8 +157,6 @@ class HomeScreenView extends GetView<HomeController> {
                                     isFavourite: fav,
                                   );
                                 } else {
-                                  // fav.value = false;
-                                  print(fav.value);
                                   controller.wishlistDatabase
                                       .removeProductFromWishlist(
                                     data["productId"],

@@ -3,6 +3,7 @@ import 'package:shopify/app/controller/wishlist_functionality.dart';
 import 'package:shopify/app/global/firebase/auth/auth.dart';
 import 'package:shopify/app/global/firebase/database/cart_db.dart';
 import 'package:shopify/app/global/firebase/database/db.dart';
+import 'package:shopify/app/global/firebase/database/user_data/address_db.dart';
 import 'package:shopify/app/global/firebase/database/wishlist_db.dart';
 import 'package:shopify/app/modules/cart/controllers/cart_controller.dart';
 import 'package:shopify/app/modules/category/controllers/category_controller.dart';
@@ -11,6 +12,7 @@ import 'package:shopify/app/modules/home/controllers/home_controller.dart';
 import 'package:shopify/app/modules/login/controllers/login_controller.dart';
 import 'package:shopify/app/modules/product/controllers/product_controller.dart';
 import 'package:shopify/app/controller/cart_functionality.dart';
+import 'package:shopify/app/modules/profile/controllers/edit_address_controller.dart';
 import 'package:shopify/app/modules/profile/controllers/profile_controller.dart';
 import 'package:shopify/app/modules/profile/controllers/setting_controller.dart';
 import 'package:shopify/app/modules/signup/controllers/signup_controller.dart';
@@ -84,6 +86,14 @@ class AllBinding extends Bindings {
     );
     Get.lazyPut<WishlistDatabase>(
       () => WishlistDatabase(),
+      fenix: true,
+    );
+    Get.lazyPut<EditAddressController>(
+      () => EditAddressController(),
+      fenix: true,
+    );
+    Get.lazyPut<AddressDatabase>(
+      () => AddressDatabase(),
       fenix: true,
     );
   }

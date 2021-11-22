@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:shopify/app/global/firebase/auth/auth.dart';
+import 'package:shopify/app/global/firebase/database/user_data/address_db.dart';
 import 'package:shopify/app/modules/login/controllers/login_controller.dart';
+import 'package:shopify/app/modules/profile/controllers/edit_address_controller.dart';
 
 import 'package:shopify/app/modules/profile/controllers/profile_controller.dart';
 import 'package:shopify/app/modules/signup/controllers/signup_controller.dart';
@@ -25,6 +27,14 @@ class ProfileBinding extends Bindings {
 
     Get.lazyPut<FirebaseAuthService>(
       () => FirebaseAuthService(),
+      fenix: true,
+    );
+    Get.lazyPut<EditAddressController>(
+      () => EditAddressController(),
+      fenix: true,
+    );
+    Get.lazyPut<AddressDatabase>(
+      () => AddressDatabase(),
       fenix: true,
     );
   }

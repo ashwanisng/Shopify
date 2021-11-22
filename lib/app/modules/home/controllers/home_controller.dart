@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shopify/app/controller/wishlist_functionality.dart';
 import 'package:shopify/app/global/firebase/database/cart_db.dart';
 import 'package:shopify/app/global/firebase/database/db.dart';
 import 'package:shopify/app/global/firebase/database/wishlist_db.dart';
