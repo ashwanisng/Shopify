@@ -13,6 +13,7 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    addressDatabase.fetchUserAddress();
   }
 
   @override

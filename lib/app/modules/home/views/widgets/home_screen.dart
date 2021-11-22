@@ -96,7 +96,7 @@ class HomeScreenView extends GetView<HomeController> {
                 var data = controller.db.items[index];
                 var val = data["isFavourite"];
                 RxBool fav = RxBool(val);
-                print(fav);
+                // print(fav);
                 return Card(
                   elevation: 5,
                   shape: RoundedRectangleBorder(

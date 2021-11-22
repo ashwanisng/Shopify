@@ -28,7 +28,7 @@ class ProductController extends GetxController {
   void onInit() {
     var data = Get.arguments;
 
-    print(data['isFavourite']);
+    // print(data['isFavourite']);
     productId = data["productId"];
     productName = data["productName"];
     productPrice = data["productPrice"];

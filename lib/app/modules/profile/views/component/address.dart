@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopify/app/core/enviroment/env.dart';
 import 'package:shopify/app/modules/profile/controllers/address_controller.dart';
-import 'package:shopify/app/modules/profile/controllers/profile_controller.dart';
 import 'package:shopify/app/modules/profile/views/component/edit_address.dart';
 
 class AddressView extends GetView<AddressController> {

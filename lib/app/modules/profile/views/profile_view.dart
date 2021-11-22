@@ -7,6 +7,7 @@ import 'package:shopify/app/core/enviroment/env.dart';
 
 import 'package:shopify/app/modules/profile/controllers/profile_controller.dart';
 import 'package:shopify/app/modules/profile/views/component/address.dart';
+import 'package:shopify/app/modules/profile/views/component/edit_profile.dart';
 import 'package:shopify/app/modules/profile/views/component/settings.dart';
 import 'package:shopify/app/utils/custom_card.dart';
 
@@ -47,17 +48,22 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Ashwani Kumar Singh',
-                            style: Env.textStyles.headline3,
-                          ),
-                          Text(
-                            'ashwanicena5@gmail.com',
-                            style: Env.textStyles.subheads,
-                          ),
-                        ],
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(() => EditProfileView());
+                        },
+                        child: Column(
+                          children: [
+                            Text(
+                              'Ashwani Kumar Singh',
+                              style: Env.textStyles.headline3,
+                            ),
+                            Text(
+                              'ashwanicena5@gmail.com',
+                              style: Env.textStyles.subheads,
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   ],
@@ -72,7 +78,8 @@ class ProfileView extends GetView<ProfileController> {
             ),
             CustomCardView(
               cardName: 'My Addresses',
-              cardSubTitile: "3 Addresses",
+              cardSubTitile:
+                  "${controller.addressDatabase.addressList.length} Addresses",
               icon: Icons.arrow_forward_ios,
               onPress: () {
                 Get.to(() => AddressView());
