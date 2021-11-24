@@ -43,6 +43,8 @@ dependencies:
   get_storage: ^2.0.3
   image_picker: ^0.8.4+4
   permission_handler: ^8.3.0
+  mockito: ^5.0.16
+  mocktail: ^0.2.0
 
 dev_dependencies:
   flutter_test:

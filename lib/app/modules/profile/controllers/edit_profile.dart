@@ -18,7 +18,7 @@ class EditProfileController extends GetxController {
   late File file;
   FirebaseStorage storage = FirebaseStorage.instance;
 
-  selectProfileImage(ImageSource imageSource) async {
+  Future selectProfileImage(ImageSource imageSource) async {
     var pickedFile = await ImagePicker().pickImage(source: imageSource);
 
     var checkPermission = await Permission.photos.status;
@@ -64,6 +64,7 @@ class EditProfileController extends GetxController {
         colorText: Colors.white,
       );
     }
+    return selectImagePath.value;
   }
 
   @override
